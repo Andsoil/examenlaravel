@@ -1,0 +1,54 @@
+@startuml 
+class Libro{
+    id:int
+    nombre:string
+    precio:float 
+    id_autor:int
+}
+ 
+class Autor{
+    id:int
+    nombre:string
+    
+}
+class Usuario{
+    id:int
+    nombre:string
+    contrasenia:string
+}
+class Resenia{
+    id:int
+    descripcion:string
+}
+ 
+class Categoria{
+    id:int
+    nombre:string
+}
+ 
+class LibroCategoria{
+    categoria_id:int
+    libro_id:int
+}
+class UsuarioLibro{
+    id:int
+    usuario_id:int
+    libro_id:int
+}
+class UsuarioLibroResenia{
+    usuario_libro_id:int
+    resenia_id:int
+}
+ 
+
+ 
+ 
+Libro "1"--"1" Autor
+
+LibroCategoria "*"--"1" Libro
+LibroCategoria "*"--"1" Categoria
+Usuario "1"--"*" UsuarioLibro
+Libro "1"--"*" UsuarioLibro
+Resenia "1"--"*" UsuarioLibroResenia
+UsuarioLibroResenia "*"--"1" UsuarioLibro
+@enduml
